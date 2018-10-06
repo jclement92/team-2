@@ -10,7 +10,6 @@ class Chart extends Component{
             labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
             datasets:[
                 {
-
                   label: 'Progress',
                   data:[],
                   background:[
@@ -35,12 +34,12 @@ class Chart extends Component{
       axios.get('http://127.0.0.1:5000/user/budget')
         .then(function (res) {
           // handle success
-          console.log(res);
+          console.log(res.data);
           this.setState({
             chartData:{
               datasets:[
                 {
-                  data: res.data
+                  data: res.data.data
                 }
               ]
             }
@@ -48,22 +47,6 @@ class Chart extends Component{
           });
         }.bind(this));
       }
-
-
-    // updateLoginInfo(evt){
-    //   evt.preventDefault();
-    //   axios.put(`/user/${config.usersObjectId}/updateinfo`, {
-    //     logininformation:{
-    //       username: this.state.username,
-    //       password: this.state.password
-    //     }
-    //   })
-    //     .catch(function(error){
-    //       console.log(error);
-    //     });
-    //   alert('Changes Saved');
-    // }
-
 
     render(){
         return(
