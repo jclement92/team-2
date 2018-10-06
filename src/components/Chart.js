@@ -9,6 +9,7 @@ class Chart extends Component{
             labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
             datasets:[
                 {
+
                   label: 'Progress',
                   data:[
                       10,
@@ -34,7 +35,20 @@ class Chart extends Component{
                 <Line
                     data={this.state.chartData}
                     options={{
-                        maintainAspectRatio: false
+                        maintainAspectRatio: false,
+                        scales: {
+                            yAxes:[
+                                {
+                                    display:true,
+                                    ticks:{
+                                        beginAtZero: true,
+                                        steps:10,
+                                        stepValue:5,
+                                        max:100
+                                    }
+                                }
+                            ]
+                        }
                     }}
                 />
             </div>
