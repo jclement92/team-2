@@ -1,14 +1,25 @@
 from flask import Flask
 from flask_restful import Resource, Api
+from flask import jsonify
 
 app = Flask(__name__)
 api = Api(app)
 
-class HelloWorld(Resource):
+class User(Resource):
     def get(self):
-        return {'hello': 'world'}
+        user = {
+            'name': 'John Smith',
+            'income': '30000',
+            'education': 'High School',
+            'kids': '3',
+            'phone': '334-234-3341',
+            'region': 'Homestead',
+            'email': 'jsmith@gmail.com'
+        }
 
-api.add_resource(HelloWorld, '/')
+        return jsonify(user)
+
+api.add_resource(User, '/user')
 
 if __name__ == '__main__':
     app.run(debug=True)
