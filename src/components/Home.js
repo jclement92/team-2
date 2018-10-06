@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import Chart from './Chart';
 
 class Home extends Component {
+
   render() {
+    
     return (
       <div>
           <p>Hello from Home Page</p>
@@ -20,8 +23,14 @@ class Home extends Component {
           <div id="ChildSavings">
             Child Savings
             <div className="container">
-              <path d="M 10 10 L 20 20 z"/>
+
+              
+              
             </div>
+          </div>
+
+          <div>
+          <Chart />
           </div>
           
           <div id="Budget">Budget</div>
