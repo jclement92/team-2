@@ -3,11 +3,12 @@ import Chart from './Chart';
 
 class Home extends Component {
 
+
+  
   render() {
     
     return (
       <div>
-          <p>Hello from Home Page</p>
 
           <nav aria-label="Page navigation example">
             <ul class="pagination">
@@ -32,6 +33,11 @@ class Home extends Component {
           <div>
           <Chart />
           </div>
+          <div align="center">
+          <button type="button"  bsSize="Large" class="btn btn-primary btn-sm">Weekly Update</button>
+          <button type="button" bsSize="Large" class="btn btn-secondary btn-sm">Update Goal</button>
+          </div>
+
           
           <div id="Budget">Budget</div>
           <div id="Credit">Credit</div>

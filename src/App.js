@@ -12,12 +12,6 @@ class App extends Component {
       <Router>
         <div className="App">
           <Navbar />
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/budget">Budget Page</Link></li>
-            <li><Link to="/profile">Profile Page</Link></li>
-            <li><Link to="/appt">Appointment Page</Link></li>
-          </ul>
 
           <Route exact path="/" component={Home}/>
           <Route path="/budget" component={Budget}/>
@@ -25,6 +19,8 @@ class App extends Component {
           <p></p>
         </div>
       </Router>
+
+      
     );
   }
 }
