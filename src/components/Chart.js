@@ -22,13 +22,15 @@ class Chart extends Component{
             ]
           }
         }
-
+        this.updateWeek = this.updateWeek.bind(this);
     }
 
-    // updateWeek = (evt) => {
-    //   data:[]
-    //   axios.post('http://127.0.0.1:5000/user/budget',{})
-    // }
+    updateWeek(evt){
+      evt.preventDefault();
+      var data:[10]
+      axios.post('http://127.0.0.1:5000/user/budget',{data})
+      alert('changes Submit');
+    }
 
     componentDidMount(){
       axios.get('http://127.0.0.1:5000/user/budget')
@@ -72,7 +74,7 @@ class Chart extends Component{
                 />
 
                 <div align="center">
-                  <button type="button" className="btn btn-primary btn-sm" >Weekly Update</button>
+                  <button type="button" className="btn btn-primary btn-sm" onClick={this.updateWeek} >Weekly Update</button>
                   <button type="button" className="btn btn-secondary btn-sm">Update Goal</button>
                 </div>
 
