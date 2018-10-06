@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Budget from './components/Budget'
 import Profile from './components/Profile'
+import Login from './components/Login'
 
 class App extends Component {
   render() {
@@ -13,7 +14,8 @@ class App extends Component {
         <div className="App">
           <Navbar />
 
-          <Route exact path="/" component={Home}/>
+          <Route exact path="/" component={Login}/>
+          <Route path="/home" component={Home}/>
           <Route path="/budget" component={Budget}/>
           <Route path="/profile" component={Profile}/>
           <p></p>
