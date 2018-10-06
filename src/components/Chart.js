@@ -89,7 +89,7 @@ class Chart extends Component{
                                     display:true,
                                     ticks:{
                                         beginAtZero: true,
-                                        steps:10,
+                                        steps:5,
                                         stepValue:5,
                                         max:100
                                     }

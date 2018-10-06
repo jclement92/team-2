@@ -2,10 +2,25 @@ import React, { Component } from 'react';
 const axios = require('axios');
 
 const styles = {
-  width: "auto",
+  width: "50%",
   marginLeft: "15px",
   padding:    "0px",
   borderBottom: "none",
+  margin: "auto"
+}
+const styles2 = {
+  width: "40%"
+}
+const styles3 = {
+  display: "flex",
+  justifyContent:"center"
+}
+
+
+const floatingowl = {
+  width: "250px",
+  height: "325px",
+  float: "left"
 }
 
 class Profile extends Component {
@@ -80,44 +95,50 @@ class Profile extends Component {
     return (
       <form>
         <div style={styles}>
-        <h2>Profile Page!</h2>
+          <h2>Profile Page!</h2>
+          <hr/>
+          <div>
+            <img src={ require('./random-image-15.jpg') } alt="Owl" style={floatingowl} />
+          </div>
+          
+          <div style={{align: 'right', marginLeft: '280px'}}>
+            <div className="form-group">
+              <label htmlFor="fullName">Full Name</label>
+              <input type="text" className="form-control" id="fullName" placeholder="Full Name" value={this.state.userName} onChange={this.updateUserName}/>
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="fullName">Full Name</label>
-          <input type="text" className="form-control" id="fullName" placeholder="Full Name" value={this.state.userName} onChange={this.updateUserName}/>
-        </div>
+            <div className="form-group">
+              <label htmlFor="userRegion">Region</label>
+              <input type="text" className="form-control" id="userRegion" placeholder="Region" value={this.state.userRegion} onChange={this.updateRegion}/>
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="userRegion">Region</label>
-          <input type="text" className="form-control" id="userRegion" aria-describedby="region" placeholder="Region" value={this.state.userRegion} onChange={this.updateRegion}/>
-        </div>
+            <div className="form-group">
+              <label htmlFor="income">Income</label>
+              <input type="text" className="form-control" id="income" placeholder="Income" value={this.state.userIncome} onChange={this.updateIncome}/>
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="income">Income</label>
-          <input type="text" className="form-control" id="income" aria-describedby="incomedata" placeholder="Income" value={this.state.userIncome} onChange={this.updateIncome}/>
-        </div>
+            <div className="form-group">
+              <label htmlFor="education">Education</label>
+              <input type="text" className="form-control" id="education" placeholder="Education" value={this.state.userEducation} onChange={this.updateEducation}/>
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="education">Education</label>
-          <input type="text" className="form-control" id="education" aria-describedby="educationdata" placeholder="Education" value={this.state.userEducation} onChange={this.updateEducation}/>
-        </div>
+            <div className="form-group">
+              <label htmlFor="children">Children</label>
+              <input type="text" className="form-control" id="children" placeholder="Children" value={this.state.userKids} onChange={this.updateKids}/>
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="children">Children</label>
-          <input type="text" className="form-control" id="children" aria-describedby="childrendata" placeholder="Children" value={this.state.userKids} onChange={this.updateKids}/>
-        </div>
+            <div className="form-group">
+              <label htmlFor="phone">Phone number</label>
+              <input type="text" className="form-control" id="phone" placeholder="Phone" value={this.state.userPhoneNum} onChange={this.updatePhoneNum}/>
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="phone">Phone number</label>
-          <input type="text" className="form-control" id="phone" aria-describedby="phonedata" placeholder="Phone" value={this.state.userPhoneNum} onChange={this.updatePhoneNum}/>
-        </div>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input type="text" className="form-control" id="email" placeholder="Email" value={this.state.userEmail} onChange={this.updateEmail}/>
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input type="text" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" value={this.state.userEmail} onChange={this.updateEmail}/>
-        </div>
-
-        <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="submit" className="btn btn-primary" style={{marginTop: '5px'}}>Submit</button>
+          </div>
 
         </div>
       </form>

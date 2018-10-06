@@ -17,9 +17,6 @@ const buttonX = {
     width:   "50%",
 }
 
-const logintext = {
-    textAlign: "center"
-}
 
 const border = {
     float:  "none",
@@ -61,7 +58,7 @@ class Login extends Component {
   render() {
     return (
       <div style={styles}>
-          <h2 style={logintext}>Login</h2>
+          <h2 style={{textAlign: 'center'}}>Login</h2>
           <div style={border}>
             <img src={ require('./codeforgood.jpg') } alt="Codeforgood" style={cfg} />
             <button style={buttonX}>Sign Up</button>
