@@ -109,51 +109,58 @@ class SpanishProfile extends Component {
         <button type="button" class="btn btn-link" onClick={this.spanishTrue}>English</button>
         <form>
           <div style={styles}>
-            <h2>Página de Perfil!</h2>
+            <h2>Perfil</h2>
             <hr/>
-            <div>
-              <img src={ require('./random-image-15.jpg') } alt="Owl" style={floatingowl} />
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <div>
+                    <img src={ require('./random-image-15.jpg') } alt="Owl" style={floatingowl} />
+                  </div>
+                </div>
+
+              <div class="col">
+                {/* <div style={{align: 'right', marginLeft: '280px'}}> */}
+                  <div className="form-group">
+                    <label htmlFor="fullName">Nombre Completo</label>
+                    <input type="text" className="form-control" id="fullName" placeholder="Full Name" value={this.state.userName} onChange={this.updateUserName}/>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="userRegion">Región</label>
+                    <input type="text" className="form-control" id="userRegion" placeholder="Region" value={this.state.userRegion} onChange={this.updateRegion}/>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="income">Ingresos</label>
+                    <input type="text" className="form-control" id="income" placeholder="Income" value={this.state.userIncome} onChange={this.updateIncome}/>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="education">Educación</label>
+                    <input type="text" className="form-control" id="education" placeholder="Education" value={this.state.userEducation} onChange={this.updateEducation}/>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="children">Niños</label>
+                    <input type="text" className="form-control" id="children" placeholder="Children" value={this.state.userKids} onChange={this.updateKids}/>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="phone">Número de Teléfono</label>
+                    <input type="text" className="form-control" id="phone" placeholder="Phone" value={this.state.userPhoneNum} onChange={this.updatePhoneNum}/>
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="email">Correo Electronico</label>
+                    <input type="text" className="form-control" id="email" placeholder="Email" value={this.state.userEmail} onChange={this.updateEmail}/>
+                  </div>
+
+                  <button type="submit" className="btn btn-primary" style={{marginTop: '5px'}}>Enviar</button>
+                {/* </div> */}
+              </div>
+              </div>
             </div>
-
-            <div style={{align: 'right', marginLeft: '280px'}}>
-              <div className="form-group">
-                <label htmlFor="fullName">Nombre Completo</label>
-                <input type="text" className="form-control" id="fullName" placeholder="Full Name" value={this.state.userName} onChange={this.updateUserName}/>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="userRegion">Región</label>
-                <input type="text" className="form-control" id="userRegion" placeholder="Region" value={this.state.userRegion} onChange={this.updateRegion}/>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="income">Ingresos</label>
-                <input type="text" className="form-control" id="income" placeholder="Income" value={this.state.userIncome} onChange={this.updateIncome}/>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="education">Educación</label>
-                <input type="text" className="form-control" id="education" placeholder="Education" value={this.state.userEducation} onChange={this.updateEducation}/>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="children">Niños</label>
-                <input type="text" className="form-control" id="children" placeholder="Children" value={this.state.userKids} onChange={this.updateKids}/>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="phone">Número de Teléfono</label>
-                <input type="text" className="form-control" id="phone" placeholder="Phone" value={this.state.userPhoneNum} onChange={this.updatePhoneNum}/>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="email">Correo Electronico</label>
-                <input type="text" className="form-control" id="email" placeholder="Email" value={this.state.userEmail} onChange={this.updateEmail}/>
-              </div>
-
-              <button type="submit" className="btn btn-primary" style={{marginTop: '5px'}}>Enviar</button>
-            </div>
-
           </div>
         </form>
       </div>

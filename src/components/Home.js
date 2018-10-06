@@ -50,8 +50,9 @@ class Home extends Component {
           
           <div style={styles}>
           <div align="center">
-          <button type="button"  bsSize="Large" class="btn btn-primary btn-sm">Weekly Update</button>
-          <button type="button" bsSize="Large" class="btn btn-secondary btn-sm">Update Goal</button>
+          <p></p>
+
+
           </div>
           </div>
 
@@ -85,8 +86,7 @@ class Home extends Component {
           
           <div style={styles}>
           <div align="center">
-          <button type="button"  bsSize="Large" class="btn btn-primary btn-sm">Weekly Update</button>
-          <button type="button" bsSize="Large" class="btn btn-secondary btn-sm">Update Goal</button>
+          <p></p>
           </div>
           </div>
 
@@ -101,8 +101,7 @@ class Home extends Component {
           
           <div style={styles}>
           <div align="center">
-          <button type="button"  bsSize="Large" class="btn btn-primary btn-sm">Weekly Update</button>
-          <button type="button" bsSize="Large" class="btn btn-secondary btn-sm">Update Goal</button>
+          <p></p>
           </div>
           </div>
           </div>

@@ -5,7 +5,7 @@ const axios = require('axios');
 
 
 const styles = {
-  width: "50%",
+  width: "75%",
   marginLeft: "15px",
   padding:    "0px",
   borderBottom: "none",
@@ -18,7 +18,6 @@ const styles3 = {
   display: "flex",
   justifyContent:"center"
 }
-
 
 const floatingowl = {
   width: "250px",
