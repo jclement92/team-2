@@ -6,6 +6,7 @@ import Home from './components/Home'
 import Profile from './components/Profile'
 import Login from './components/Login'
 import Appointment from './components/Appointment'
+import Messages from './components/Messages'
 
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
           <Route path="/home" component={Home}/>
           <Route path="/profile" component={Profile}/>
           <Route path="/Appointment" component={Appointment}/>
+          <Route path="/Messages" component={Messages}/>
           <p></p>
         </div>
       </Router>
