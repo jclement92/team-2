@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import Chart from './Chart';
-import Chart2 from './Chart2';
+import Budget from './Budget';
+import CivicAction from './CivicAction'
+import Credit from './Credit'
+import ChildSavings from './ChildSavings'
+
 
 const styles = {
 
@@ -26,7 +29,7 @@ class Home extends Component {
     return (
 
       <div style={styles}>
-      
+
 
           <nav aria-label="Page navigation example">
             <ul class="pagination">
@@ -38,16 +41,16 @@ class Home extends Component {
             </ul>
           </nav>
 
-
-          <div id="ChildSavings">
-            Child Savings
-            <div className="container">              
+          <div id="CivicAction">
+            Civic Action
+            <div className="container">
              <div style={styles2}>
-              <Chart />
+              <CivicAction />
              </div>
             </div>
           </div>
-          
+
+
           <div style={styles}>
           <div align="center">
           <p></p>
@@ -59,9 +62,9 @@ class Home extends Component {
 
           <div id="Budget">
             <p style = {centerMe}>Budget</p>
-            <div className="container">              
+            <div className="container">
              <div style={styles2}>
-              <Chart2/>
+              <Budget />
              </div>
             </div>
           </div>
@@ -77,36 +80,36 @@ class Home extends Component {
 
           <div id="Credit">
             Credit
-            <div className="container">              
+            <div className="container">
              <div style={styles2}>
-              <Chart />
+              <Credit />
              </div>
             </div>
           </div>
-          
+
           <div style={styles}>
           <div align="center">
           <p></p>
           </div>
           </div>
 
-          <div id="CivilAction">
-            Civil Action
-            <div className="container">              
+          <div id="ChildSavings">
+            Child Savings
+            <div className="container">
              <div style={styles2}>
-              <Chart />
+              <ChildSavings />
              </div>
             </div>
           </div>
-          
+
           <div style={styles}>
           <div align="center">
           <p></p>
           </div>
           </div>
           </div>
- 
-      
+
+
     );
   }
 }

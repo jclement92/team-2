@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Line} from 'react-chartjs-2';
 const axios = require('axios');
 
-class Chart extends Component{
+class ChildSavings extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -13,12 +13,7 @@ class Chart extends Component{
                 {
                   label: 'Progress',
                   data:[],
-                  background:[
-                      'rgba(255, 99, 132, 0.6)',
-                      'rgba(255, 99, 132, 0.6)',
-                      'rgba(255, 99, 132, 0.6)',
-                      'rgba(255, 99, 132, 0.6)'
-                  ]
+                  background: ['rgba(255, 99, 132, 0.6)']
                 }
             ]
           }
@@ -54,12 +49,12 @@ class Chart extends Component{
       console.log(`${this.state.data}`)
       var data = {data:`[${this.state.data}]`}
       // var data = {data:'[30]'}
-      axios.post('http://127.0.0.1:5000/user/budget', data)
+      axios.post('http://127.0.0.1:5000/user/savings', data)
       alert('Refresh Page');
     }
 
     componentDidMount(){
-      axios.get('http://127.0.0.1:5000/user/budget')
+      axios.get('http://127.0.0.1:5000/user/savings')
         .then(function (res) {
           // handle success
           console.log(res.data);
@@ -117,4 +112,4 @@ class Chart extends Component{
     }
 }
 
-export default Chart;
+export default ChildSavings;
