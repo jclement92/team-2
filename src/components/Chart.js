@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Line} from 'react-chartjs-2';
+const axios = require('axios');
 
 class Chart extends Component{
     constructor(props){
@@ -11,12 +12,7 @@ class Chart extends Component{
                 {
 
                   label: 'Progress',
-                  data:[
-                      10,
-                      20,
-                      30,
-                      40
-                  ],
+                  data:[],
                   background:[
                       'rgba(255, 99, 132, 0.6)',
                       'rgba(255, 99, 132, 0.6)',
@@ -27,8 +23,48 @@ class Chart extends Component{
             ]
           }
         }
-        
+
     }
+
+    // updateWeek = (evt) => {
+    //   data:[]
+    //   axios.post('http://127.0.0.1:5000/user/budget',{})
+    // }
+
+    componentDidMount(){
+      axios.get('http://127.0.0.1:5000/user/budget')
+        .then(function (res) {
+          // handle success
+          console.log(res);
+          this.setState({
+            chartData:{
+              datasets:[
+                {
+                  data: [0,90,40,60]
+                }
+              ]
+            }
+
+          });
+        }.bind(this));
+      }
+
+
+    // updateLoginInfo(evt){
+    //   evt.preventDefault();
+    //   axios.put(`/user/${config.usersObjectId}/updateinfo`, {
+    //     logininformation:{
+    //       username: this.state.username,
+    //       password: this.state.password
+    //     }
+    //   })
+    //     .catch(function(error){
+    //       console.log(error);
+    //     });
+    //   alert('Changes Saved');
+    // }
+
+
     render(){
         return(
             <div className="chart">
@@ -51,10 +87,15 @@ class Chart extends Component{
                         }
                     }}
                 />
+
+                <div align="center">
+                  <button type="button" className="btn btn-primary btn-sm" >Weekly Update</button>
+                  <button type="button" className="btn btn-secondary btn-sm">Update Goal</button>
+                </div>
+
             </div>
         )
     }
 }
 
 export default Chart;
-
