@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router,Route, Link } from 'react-router-dom'
 
+import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Budget from './components/Budget'
 import Profile from './components/Profile'
@@ -10,6 +11,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+          <Navbar />
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/budget">Budget Page</Link></li>
