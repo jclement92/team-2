@@ -6,9 +6,14 @@ const styles = {
   marginLeft: "15px",
   padding:    "0px",
   borderBottom: "none",
+  margin: "auto"
 }
 const styles2 = {
   width: "40%"
+}
+const styles3 = {
+  display: "flex",
+  justifyContent:"center"
 }
 
 
@@ -29,14 +34,7 @@ class Profile extends Component {
         {/*<fieldset>*/}
         <h4>Profile</h4> {/*<legend>*/}
 
-        <div class="container">
-          <div class="row">
-               <div class="col-sm">
-               </div>
-          </div>
 
-        <div class="row">
-               <div class="col-sm">
                
         <div class="container">
           <div class="row">
@@ -128,18 +126,17 @@ class Profile extends Component {
                 </div>
               </div>
               </div>
-          </div>
 
-          <div class="row">
-               <div class="col-sm">
-               </div>
-          </div>
-</div>
+              <div style={styles3}>
           <button type="submit" class="btn btn-primary">Submit</button>
           {/*</fieldset>*/}
-            
           </div>
-        </div>
+
+          </div>
+
+          
+          
+        
       </form>
     );
   }
