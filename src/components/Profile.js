@@ -1,88 +1,136 @@
 import React, { Component } from 'react';
-{/* import { grey } from 'ansi-colors'; */}
+const axios = require('axios');
 
 const styles = {
-  width: "auto",
-  marginLeft: "15px",
-  padding:    "0px",
+  width:        "95%",
+  marginLeft:   "15px",
+  padding:      "0px",
   borderBottom: "none",
 }
 
-
-{/* No fieldset border... */}
-{/*
-  const brdr = {
-  marginLeft: "15px",
-  border: "1px solid grey"
-} 
-*/}
+const floatingowl = {
+  width: "250px",
+  height: "325px",
+  float: "left"
+}
 
 class Profile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: '',
+      userRegion: '',
+      userIncome: '',
+      userEducation: '',
+      userKids: '',
+      userPhoneNum: '',
+      userEmail: ''
+    };
+  }
+
+  updateUserName = (val) => {
+    this.setState({
+      userName: val.target.value
+    });
+  }
+  updateRegion = (val) => {
+    this.setState({
+      userRegion: val.target.value
+    });
+  }
+  updateIncome = (val) => {
+    this.setState({
+      userIncome: val.target.value
+    });
+  }
+  updateEducation = (val) => {
+    this.setState({
+      userEducation: val.target.value
+    });
+  }
+  updateKids = (val) => {
+    this.setState({
+      userKids: val.target.value
+    });
+  }
+  updatePhoneNum = (val) => {
+    this.setState({
+      userPhoneNum: val.target.value
+    });
+  }
+  updateEmail = (val) => {
+    this.setState({
+      userEmail: val.target.value
+    });
+  }
+
+  componentDidMount(){
+    axios.get('http://127.0.0.1:5000/user')
+      .then(function (res) {
+        // handle success
+        console.log(res);
+        this.setState({
+          userName: res.data.name,
+          userRegion: res.data.region,
+          userIncome: res.data.income,
+          userEducation: res.data.education,
+          userKids: res.data.kids,
+          userPhoneNum: res.data.phone,
+          userEmail: res.data.email
+        });
+      }.bind(this));
+    }
+
+
   render() {
     return (
       <form>
         <div style={styles}>
-        {/*<fieldset>*/}
-        <h2>Profile Page!</h2> {/*<legend>*/}
-
-        <div class="form-group">
-          <label for="firstname">First Name</label>
-          <input type="text" class="form-control" id="firstname" aria-describedby="first" placeholder="First name" />
-        </div>
-
-        <div class="form-group">
-          <label for="lastname">Last Name</label>
-          <input type="text" class="form-control" id="lastname" aria-describedby="last" placeholder="Last name" />
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" />
-        </div>
-
-        <div class="form-group">
-          <label for="address">Address</label>
-          <input type="text" class="form-control" id="address" aria-describedby="location" placeholder="Address" />
-        </div>
-
-        <div class="form-group">
-          <label for="city">City</label>
-          <input type="text" class="form-control" id="city" aria-describedby="citydata" placeholder="City" />
-        </div>
-
-        <div class="form-group">
-          <label for="state">State</label>
-          <input type="text" class="form-control" id="state" aria-describedby="statedata" placeholder="State" />
-        </div>
-
-        <div class="form-group">
-          <label for="zip">Zip code</label>
-          <input type="number" class="form-control" id="zip" aria-describedby="zipdata" placeholder="Zip code" />
-        </div>
-
-        <div class="form-group">
-          <label for="phone">Phone number</label>
-          <input type="text" class="form-control" id="phone" aria-describedby="phonedata" placeholder="Phone" />
-        </div>
-
-        <div class="form-group">
-          <label for="income">Income</label>
-          <input type="number" step="0.01" min="0" class="form-control" id="income" aria-describedby="incomedata" placeholder="Income" />
-        </div>
-
-        <div class="form-group">
-          <label for="education">Education</label>
-          <input type="text" class="form-control" id="education" aria-describedby="educationdata" placeholder="Education" />
-        </div>
-
-        <div class="form-group">
-          <label for="children">Children</label>
-          <input type="number" class="form-control" id="children" aria-describedby="childrendata" placeholder="Children" />
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-        {/*</fieldset>*/}
+          <h2>Profile Page!</h2>
+          <hr/>
+          <div>
+            <img src={ require('./random-image-15.jpg') } alt="Owl" style={floatingowl} />
+          </div>
           
+          <div style={{align: 'right', marginLeft: '280px'}}>
+            <div className="form-group">
+              <label htmlFor="fullName">Full Name</label>
+              <input type="text" className="form-control" id="fullName" placeholder="Full Name" value={this.state.userName} onChange={this.updateUserName}/>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="userRegion">Region</label>
+              <input type="text" className="form-control" id="userRegion" placeholder="Region" value={this.state.userRegion} onChange={this.updateRegion}/>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="income">Income</label>
+              <input type="text" className="form-control" id="income" placeholder="Income" value={this.state.userIncome} onChange={this.updateIncome}/>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="education">Education</label>
+              <input type="text" className="form-control" id="education" placeholder="Education" value={this.state.userEducation} onChange={this.updateEducation}/>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="children">Children</label>
+              <input type="text" className="form-control" id="children" placeholder="Children" value={this.state.userKids} onChange={this.updateKids}/>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="phone">Phone number</label>
+              <input type="text" className="form-control" id="phone" placeholder="Phone" value={this.state.userPhoneNum} onChange={this.updatePhoneNum}/>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input type="text" className="form-control" id="email" placeholder="Email" value={this.state.userEmail} onChange={this.updateEmail}/>
+            </div>
+
+            <button type="submit" className="btn btn-primary" style={{marginTop: '5px'}}>Submit</button>
+          </div>
+
         </div>
       </form>
     );
@@ -90,4 +138,3 @@ class Profile extends Component {
 }
 
 export default Profile;
-
