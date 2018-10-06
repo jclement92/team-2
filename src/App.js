@@ -3,10 +3,11 @@ import { BrowserRouter as Router,Route, Link } from 'react-router-dom'
 
 import Navbar from './components/Navbar'
 import Home from './components/Home'
-import Budget from './components/Budget'
 import Profile from './components/Profile'
 import Login from './components/Login'
 import Appointment from './components/Appointment'
+import Messages from './components/Messages'
+
 
 class App extends Component {
   render() {
@@ -17,9 +18,9 @@ class App extends Component {
 
           <Route exact path="/" component={Login}/>
           <Route path="/home" component={Home}/>
-          <Route path="/budget" component={Budget}/>
           <Route path="/profile" component={Profile}/>
-          <Route path="/appointment" component={Appointment}/>
+          <Route path="/Appointment" component={Appointment}/>
+          <Route path="/Messages" component={Messages}/>
           <p></p>
         </div>
       </Router>

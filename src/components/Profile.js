@@ -2,11 +2,20 @@ import React, { Component } from 'react';
 const axios = require('axios');
 
 const styles = {
-  width:        "95%",
-  marginLeft:   "15px",
-  padding:      "0px",
+  width: "50%",
+  marginLeft: "15px",
+  padding:    "0px",
   borderBottom: "none",
+  margin: "auto"
 }
+const styles2 = {
+  width: "40%"
+}
+const styles3 = {
+  display: "flex",
+  justifyContent:"center"
+}
+
 
 const floatingowl = {
   width: "250px",
