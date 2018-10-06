@@ -40,7 +40,7 @@ class Chart extends Component{
             chartData:{
               datasets:[
                 {
-                  data: [0,90,40,60]
+                  data: res.data
                 }
               ]
             }
