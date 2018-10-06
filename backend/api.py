@@ -1,14 +1,14 @@
-from flask import Flask
+from flask import Flask, request
 from flask_restful import Resource, Api
 from flask import jsonify
 from flask_cors import CORS
 from config import FIREBASE_URL
 from firebase import firebase
+import json
 
 app = Flask(__name__)
 CORS(app)
 api = Api(app)
-
 
 class User(Resource):
     def get(self):
@@ -25,10 +25,36 @@ class User(Resource):
         return jsonify(user)
 
 class Budget(Resource):
+
     def get(self):
         fb = firebase.FirebaseApplication(FIREBASE_URL, None)
-        res = fb.get('/user/budget', None)
+        fb_res = fb.get('/user/budget', None)
+
+        # sample response from firebase will be of the form:
+        # "{ x: [1,2,3,4], y: [10,20,40,50], goal: 100 }"
+
+        y_axis = eval(fb_res["y"])
+
+        res = {
+            "data": y_axis
+        }
+
         return jsonify(res)
+    
+    # def post(self):
+    #     appendee = request.get_json(force=True)["data"]
+    #     print(type(appendee))
+
+    #     fb = firebase.FirebaseApplication(FIREBASE_URL, None)
+    #     old_y = eval(fb.get('/user/budget', None)["y"])
+    #     print(type(old_y))
+    #     new_y = old_y.append(eval(appendee)[0])
+    #     print((type(new_y)))
+    #     if new_y is not None:
+    #         fb.put('/user/budget', "y", new_y)
+    #     else:
+    #         print("fuck you bug")
+
 
 api.add_resource(User, '/user')
 api.add_resource(Budget, '/user/budget')
