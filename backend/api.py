@@ -49,9 +49,59 @@ class Budget(Resource):
         new_y = old_y + eval(appendee)
         fb.put('/user/budget', "y", new_y)
 
+class Credit(Resource):
+
+    def get(self):
+        fb = firebase.FirebaseApplication(FIREBASE_URL, None)
+        fb_res = fb.get('/user/credit', None)
+
+        # sample response from firebase will be of the form:
+        # "{ x: [1,2,3,4], y: [10,20,40,50], goal: 100 }"
+
+        y_axis = fb_res["y"]
+
+        res = {
+            "data": y_axis
+        }
+
+        return jsonify(res)
+    
+    def post(self):
+        appendee = request.get_json(force=True)["data"]
+
+        fb = firebase.FirebaseApplication(FIREBASE_URL, None)
+        old_y = fb.get('/user/credit', None)["y"]
+        new_y = old_y + eval(appendee)
+        fb.put('/user/credit', "y", new_y)
+
+class Savings(Resource):
+
+    def get(self):
+        fb = firebase.FirebaseApplication(FIREBASE_URL, None)
+        fb_res = fb.get('/user/savings', None)
+
+        y_axis = fb_res["y"]
+
+        res = {
+            "data": y_axis
+        }
+
+        return jsonify(res)
+    
+    def post(self):
+        appendee = request.get_json(force=True)["data"]
+
+        fb = firebase.FirebaseApplication(FIREBASE_URL, None)
+        old_y = fb.get('/user/savings', None)["y"]
+        new_y = old_y + eval(appendee)
+        fb.put('/user/savings', "y", new_y)
+
+
 
 api.add_resource(User, '/user')
 api.add_resource(Budget, '/user/budget')
+api.add_resource(Credit, '/user/credit')
+api.add_resource(Savings, '/user/savings')
 
 if __name__ == '__main__':
     app.run(debug=True)
