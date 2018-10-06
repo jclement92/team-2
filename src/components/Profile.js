@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import SpanishProfile from './SpanishProfile'
+import EnglishProfile from './EnglishProfile'
 const axios = require('axios');
+
 
 const styles = {
   width: "50%",
@@ -27,6 +30,7 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      spanish: false,
       userName: '',
       userRegion: '',
       userIncome: '',
@@ -90,59 +94,26 @@ class Profile extends Component {
       }.bind(this));
     }
 
+spanishTrue = () =>{
+  this.setState({
+    spanish: true
+  })
+}
+
 
   render() {
-    return (
-      <form>
-        <div style={styles}>
-          <h2>Profile Page!</h2>
-          <hr/>
-          <div>
-            <img src={ require('./random-image-15.jpg') } alt="Owl" style={floatingowl} />
-          </div>
-          
-          <div style={{align: 'right', marginLeft: '280px'}}>
-            <div className="form-group">
-              <label htmlFor="fullName">Full Name</label>
-              <input type="text" className="form-control" id="fullName" placeholder="Full Name" value={this.state.userName} onChange={this.updateUserName}/>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="userRegion">Region</label>
-              <input type="text" className="form-control" id="userRegion" placeholder="Region" value={this.state.userRegion} onChange={this.updateRegion}/>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="income">Income</label>
-              <input type="text" className="form-control" id="income" placeholder="Income" value={this.state.userIncome} onChange={this.updateIncome}/>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="education">Education</label>
-              <input type="text" className="form-control" id="education" placeholder="Education" value={this.state.userEducation} onChange={this.updateEducation}/>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="children">Children</label>
-              <input type="text" className="form-control" id="children" placeholder="Children" value={this.state.userKids} onChange={this.updateKids}/>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="phone">Phone number</label>
-              <input type="text" className="form-control" id="phone" placeholder="Phone" value={this.state.userPhoneNum} onChange={this.updatePhoneNum}/>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input type="text" className="form-control" id="email" placeholder="Email" value={this.state.userEmail} onChange={this.updateEmail}/>
-            </div>
-
-            <button type="submit" className="btn btn-primary" style={{marginTop: '5px'}}>Submit</button>
-          </div>
-
+    if(this.state.spanish === true){
+      return(
+        <SpanishProfile />
+      )
+    } else {
+      return (
+        <div>
+          <button type="button" class="btn btn-link" onClick={this.spanishTrue}>Spanish</button>
+          <EnglishProfile />
         </div>
-      </form>
-    );
+      );
+    }
   }
 }
 
