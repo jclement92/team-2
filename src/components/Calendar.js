@@ -131,7 +131,7 @@ class Calendar extends Component {
         secondary={true}
         keyboardFocused={true}
         onClick={() => {
-         // this.deleteEvent(), this.handleClose();
+         this.deleteEvent() /*this.handleClose()*/;
         }}
       />,
       <FlatButton
@@ -140,7 +140,7 @@ class Calendar extends Component {
         keyboardFocused={true}
         onClick={this.handleClose}
         onClick={() => {
-         // this.updateEvent(), this.handleClose();
+         this.updateEvent()/*, this.handleClose()*/;
         }}
       />
     ];
@@ -150,9 +150,9 @@ class Calendar extends Component {
         label="Submit"
         primary={true}
         keyboardFocused={true}
-        // onClick={() => {
-        //   this.setNewAppointment(), this.handleClose();
-        // }}
+         onClick={() => {
+           this.setNewAppointment()/*, this.handleClose()*/;
+         }}
       />
     ];
     return (
