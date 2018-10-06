@@ -6,6 +6,7 @@ class Chart extends Component{
     constructor(props){
         super(props);
         this.state = {
+          data: [],
           chartData:{
             labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
             datasets:[
@@ -25,11 +26,36 @@ class Chart extends Component{
         this.updateWeek = this.updateWeek.bind(this);
     }
 
-    updateWeek(evt){
+    updateData = (evt) =>{
+      this.setState({
+        data: [evt.target.value]
+      })
+    }
+
+    // refreshPage = () => {
+    //   axios.get('http://127.0.0.1:5000/user/budget')
+    //     .then(function (res) {
+    //       // handle success
+    //       console.log(res.data);
+    //       this.setState({
+    //         chartData:{
+    //           datasets:[
+    //             {
+    //               data: res.data.data
+    //             }
+    //           ]
+    //         }
+    //       });
+    //     }.bind(this));
+    // }
+
+    updateWeek = (evt) => {
       evt.preventDefault();
-      var data:[10]
-      axios.post('http://127.0.0.1:5000/user/budget',{data})
-      alert('changes Submit');
+      console.log(`${this.state.data}`)
+      var data = {data:`[${this.state.data}]`}
+      // var data = {data:'[30]'}
+      axios.post('http://127.0.0.1:5000/user/budget', data)
+      alert('Refresh Page');
     }
 
     componentDidMount(){
@@ -74,7 +100,15 @@ class Chart extends Component{
                 />
 
                 <div align="center">
-                  <button type="button" className="btn btn-primary btn-sm" onClick={this.updateWeek} >Weekly Update</button>
+                  <form onSubmit={this.updateWeek}>
+                    <div class="form-group">
+                      <label htmlFor="weeklyUpdate">Weekly Update</label>
+                      <input type="number" class="form-control" id="weeklyUpdate" aria-describedby="emailHelp" placeholder="Number" value={this.state.data} onChange={this.updateData}/>
+                      <button type="submit" className="btn btn-primary btn-sm">Submit</button>
+                    </div>
+                  </form>
+
+                  {/* <button type="button" className="btn btn-primary btn-sm" onClick={this.updateWeek} >Weekly Update</button> */}
                   <button type="button" className="btn btn-secondary btn-sm">Update Goal</button>
                 </div>
 
