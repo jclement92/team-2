@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
+const axios = require('axios');
 
 class Profile extends Component {
+
+  componentDidMount(){
+    axios.get('http://127.0.0.1:5000/user')
+    .then(function (response) {
+    // handle success
+    console.log(response);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    }
+
   render() {
     return (
       <div>
@@ -33,4 +47,3 @@ class Profile extends Component {
 }
 
 export default Profile;
-
