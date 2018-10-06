@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
 
 const styles = {
     align:       "center",
@@ -40,6 +41,23 @@ const cfg = {
 }
 
 class Login extends Component {
+
+    state = {
+        redirect: false
+      }
+    
+      setRedirect = () => {
+        this.setState({
+          redirect: true
+        })
+      }
+    
+      renderRedirect = () => {
+        if (this.state.redirect) {
+          return <Redirect to='./home' />
+        }
+      }
+
   render() {
     return (
       <div style={styles}>
@@ -47,7 +65,8 @@ class Login extends Component {
           <div style={border}>
             <img src={ require('./codeforgood.jpg') } alt="Codeforgood" style={cfg} />
             <button style={buttonX}>Sign Up</button>
-            <button style={buttonX}>Login</button>
+            {this.renderRedirect()}
+            <button style={buttonX} onClick={this.setRedirect} >Login</button>
           </div>
       </div>
     );
