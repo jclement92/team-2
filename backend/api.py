@@ -33,7 +33,7 @@ class Budget(Resource):
         # sample response from firebase will be of the form:
         # "{ x: [1,2,3,4], y: [10,20,40,50], goal: 100 }"
 
-        y_axis = eval(fb_res["y"])
+        y_axis = fb_res["y"]
 
         res = {
             "data": y_axis
@@ -41,19 +41,13 @@ class Budget(Resource):
 
         return jsonify(res)
     
-    # def post(self):
-    #     appendee = request.get_json(force=True)["data"]
-    #     print(type(appendee))
+    def post(self):
+        appendee = request.get_json(force=True)["data"]
 
-    #     fb = firebase.FirebaseApplication(FIREBASE_URL, None)
-    #     old_y = eval(fb.get('/user/budget', None)["y"])
-    #     print(type(old_y))
-    #     new_y = old_y.append(eval(appendee)[0])
-    #     print((type(new_y)))
-    #     if new_y is not None:
-    #         fb.put('/user/budget', "y", new_y)
-    #     else:
-    #         print("fuck you bug")
+        fb = firebase.FirebaseApplication(FIREBASE_URL, None)
+        old_y = fb.get('/user/budget', None)["y"]
+        new_y = old_y + eval(appendee)
+        fb.put('/user/budget', "y", new_y)
 
 
 api.add_resource(User, '/user')
