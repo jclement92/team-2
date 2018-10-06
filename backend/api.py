@@ -15,7 +15,7 @@ class User(Resource):
         user = {
             'name': 'John Smith',
             'income': '30000',
-            'education': 'High School',
+            'education': 'Miami Killian Senior High',
             'kids': '3',
             'phone': '334-234-3341',
             'region': 'Homestead',
@@ -96,12 +96,35 @@ class Savings(Resource):
         new_y = old_y + eval(appendee)
         fb.put('/user/savings', "y", new_y)
 
+class CivicAction(Resource):
+
+    def get(self):
+        fb = firebase.FirebaseApplication(FIREBASE_URL, None)
+        fb_res = fb.get('/user/civicAction', None)
+
+        y_axis = fb_res["y"]
+
+        res = {
+            "data": y_axis
+        }
+
+        return jsonify(res)
+    
+    def post(self):
+        appendee = request.get_json(force=True)["data"]
+
+        fb = firebase.FirebaseApplication(FIREBASE_URL, None)
+        old_y = fb.get('/user/civicAction', None)["y"]
+        new_y = old_y + eval(appendee)
+        fb.put('/user/civicAction', "y", new_y)
+
 
 
 api.add_resource(User, '/user')
 api.add_resource(Budget, '/user/budget')
 api.add_resource(Credit, '/user/credit')
 api.add_resource(Savings, '/user/savings')
+api.add_resource(CivicAction, '/user/civicAction')
 
 if __name__ == '__main__':
     app.run(debug=True)
